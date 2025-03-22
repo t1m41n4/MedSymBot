@@ -21,6 +21,7 @@ import { Search, ShoppingCart, Menu, User, Package, FileText } from "lucide-reac
 import { useCart } from "@/context/cart-context"
 import { useAuth } from "@/context/auth-context"
 import ShopForMeButton from "@/components/shop-for-me/shop-for-me-button"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const Header = () => {
   const pathname = usePathname()
@@ -31,8 +32,8 @@ const Header = () => {
   const isActive = (path: string) => pathname === path
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="container flex h-16 items-center">
+    <header className="sticky top-0 z-50 w-full border-b bg-background">
+      <div className="container flex h-14 items-center">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="md:hidden">
@@ -222,6 +223,8 @@ const Header = () => {
               <span className="sr-only">Cart</span>
             </Button>
           </Link>
+
+          <ThemeToggle />
 
           {user ? (
             <div className="relative">

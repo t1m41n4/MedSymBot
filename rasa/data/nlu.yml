@@ -1,0 +1,36 @@
+version: "3.1"
+nlu:
+  - intent: search_medication
+    examples: |
+      - I need medicine for [headache](symptom)
+      - Looking for [pain](symptom) medication
+      - Medicine for [fever](symptom)
+      - Do you have anything for [cold](symptom)
+
+  - intent: medication_info
+    examples: |
+      - Tell me about [Paracetamol](medication)
+      - What is [Ibuprofen](medication) used for
+      - Information about [Vitamin C](medication)
+      - Side effects of [Aspirin](medication)
+
+  - intent: swahili
+    examples: |
+      - Natafuta dawa ya [maumivu ya kichwa](symptom)
+      - Nina [homa](symptom)
+      - Nahitaji [panadol](medication)
+      - Tafadhali nisaidie kupata dawa
+
+  - intent: kenyan_guidelines
+    examples: |
+      - What are the guidelines for [malaria](condition) in Kenya?
+      - How should [TB](condition) be treated in Kenya?
+      - Kenyan protocol for [diabetes](condition) treatment
+      - What's the recommended treatment for [hypertension](condition) in Kenya?
+
+  - intent: public_health
+    examples: |
+      - How can I prevent [malaria](condition)?
+      - Public health measures for [TB](condition)
+      - Prevention of [HIV](condition) in Kenya
+      - Community guidelines for [diabetes](condition) management
