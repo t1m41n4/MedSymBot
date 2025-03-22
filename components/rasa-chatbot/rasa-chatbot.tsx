@@ -792,7 +792,7 @@ export default function RasaChatbot({ onClose }: RasaChatbotProps) {
           <Button
             size="sm"
             variant="outline"
-            onClick={()={() => {
+            onClick={() => {
               router.push('/login')
               onClose()
             }}
