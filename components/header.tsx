@@ -28,6 +28,7 @@ const Header = () => {
   const { cartItems, getCartTotal } = useCart()
   const { user, logout } = useAuth()
   const [searchQuery, setSearchQuery] = useState("")
+  const [isShopForMeOpen, setIsShopForMeOpen] = useState(false)
 
   const isActive = (path: string) => pathname === path
 
@@ -199,7 +200,7 @@ const Header = () => {
 
           <div className="ml-auto flex items-center gap-2">
             <div className="hidden md:block">
-              <ShopForMeButton />
+              <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
             </div>
 
             <div className="relative hidden md:flex items-center">
@@ -295,16 +296,18 @@ const Header = () => {
       {/* Mobile floating action buttons */}
       <div className="fixed bottom-4 right-4 md:hidden z-50 flex flex-col gap-4">
         <Button
-          onClick={() => {
-            const shopForMeBtn = document.querySelector('[data-shop-for-me="true"]') as HTMLButtonElement
-            shopForMeBtn?.click()
-          }}
+          onClick={() => setIsShopForMeOpen(true)}
           size="lg"
           className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
         >
           <Bot className="h-6 w-6" />
           <span className="sr-only">Shop For Me</span>
         </Button>
+      </div>
+
+      {/* Render ShopForMeButton for mobile */}
+      <div className="md:hidden">
+        <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
       </div>
     </>
   )

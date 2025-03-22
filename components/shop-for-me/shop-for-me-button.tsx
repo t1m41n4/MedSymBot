@@ -71,10 +71,14 @@ const productDatabase = [
   },
 ]
 
-export default function ShopForMeButton() {
+interface ShopForMeButtonProps {
+  isOpen?: boolean
+  onOpenChange?: (open: boolean) => void
+}
+
+export default function ShopForMeButton({ isOpen, onOpenChange }: ShopForMeButtonProps) {
   const { addToCart } = useCart()
   const { toast } = useToast()
-  const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState("")
   const [isSearching, setIsSearching] = useState(false)
   const [searchResults, setSearchResults] = useState<typeof productDatabase>([])
@@ -139,13 +143,13 @@ export default function ShopForMeButton() {
     })
 
     setSelectedProducts([])
-    setIsOpen(false)
+    onOpenChange?.(false)
   }
 
   return (
     <>
       <Button
-        onClick={() => setIsOpen(true)}
+        onClick={() => onOpenChange?.(true)}
         className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
         data-shop-for-me="true"
       >
@@ -161,7 +165,7 @@ export default function ShopForMeButton() {
                 <Bot className="mr-2 h-5 w-5 text-purple-600" />
                 AI Shopping Assistant
               </h2>
-              <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
+              <Button variant="ghost" size="icon" onClick={() => onOpenChange?.(false)}>
                 <X className="h-5 w-5" />
               </Button>
             </div>
@@ -282,7 +286,7 @@ export default function ShopForMeButton() {
                   )}
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="outline" onClick={() => setIsOpen(false)}>
+                  <Button variant="outline" onClick={() => onOpenChange?.(false)}>
                     Cancel
                   </Button>
                   <Button
