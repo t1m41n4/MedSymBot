@@ -43,52 +43,111 @@ const Header = () => {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
-              <nav className="grid gap-6 text-lg font-medium">
-                <Link
-                  href="/"
-                  className="flex items-center gap-2 text-lg font-semibold"
-                >
+            <SheetContent side="left" className="w-full sm:w-[350px]">
+              <div className="flex flex-col h-full">
+                <div className="flex items-center gap-2 pb-4 mb-4 border-b">
                   <Package className="h-6 w-6" />
-                  <span className="font-bold">AfyaGo</span>
-                </Link>
-                <Link
-                  href="/"
-                  className={`${isActive("/") ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/products"
-                  className={`${isActive("/products") ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
-                >
-                  Products
-                </Link>
-                <Link
-                  href="/categories"
-                  className={`${isActive("/categories") ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
-                >
-                  Categories
-                </Link>
-                <Link
-                  href="/prescriptions"
-                  className={`${isActive("/prescriptions") ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
-                >
-                  Prescriptions
-                </Link>
-                <Link
-                  href="/about"
-                  className={`${isActive("/about") ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className={`${isActive("/contact") ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
-                >
-                  Contact
-                </Link>
-              </nav>
+                  <span className="font-bold text-lg">AfyaGo</span>
+                </div>
+
+                <div className="relative mb-4">
+                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    type="search"
+                    placeholder="Search products..."
+                    className="pl-8"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                </div>
+
+                <nav className="flex-1">
+                  <div className="space-y-1">
+                    <h4 className="px-2 text-sm font-semibold mb-2">Main Menu</h4>
+                    <Link
+                      href="/"
+                      className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
+                        isActive("/") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
+                      }`}
+                    >
+                      Home
+                    </Link>
+                    {/* Add similar styling for other main menu items */}
+                  </div>
+
+                  <div className="mt-6 space-y-1">
+                    <h4 className="px-2 text-sm font-semibold mb-2">Shop</h4>
+                    <Link
+                      href="/products"
+                      className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
+                        isActive("/products") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
+                      }`}
+                    >
+                      All Products
+                    </Link>
+                    <Link
+                      href="/categories"
+                      className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
+                        isActive("/categories") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
+                      }`}
+                    >
+                      Categories
+                    </Link>
+                    <Link
+                      href="/prescriptions"
+                      className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
+                        isActive("/prescriptions") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
+                      }`}
+                    >
+                      Prescriptions
+                    </Link>
+                  </div>
+
+                  <div className="mt-6 space-y-1">
+                    <h4 className="px-2 text-sm font-semibold mb-2">Help & Info</h4>
+                    <Link
+                      href="/about"
+                      className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
+                        isActive("/about") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
+                      }`}
+                    >
+                      About Us
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
+                        isActive("/contact") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
+                      }`}
+                    >
+                      Contact
+                    </Link>
+                  </div>
+                </nav>
+
+                {user ? (
+                  <div className="border-t pt-4 mt-4">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage src="" alt={user.name} />
+                        <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium">{user.name}</span>
+                        <span className="text-xs text-muted-foreground">{user.email}</span>
+                      </div>
+                    </div>
+                    <Button variant="secondary" className="w-full" onClick={logout}>
+                      Sign Out
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="border-t pt-4 mt-4">
+                    <Button asChild className="w-full">
+                      <Link href="/login">Sign In</Link>
+                    </Button>
+                  </div>
+                )}
+              </div>
             </SheetContent>
           </Sheet>
 
@@ -294,16 +353,18 @@ const Header = () => {
       </header>
 
       {/* Mobile floating action buttons */}
-      <div className="fixed bottom-4 right-4 md:hidden z-50 flex flex-col gap-4">
-        <Button
-          onClick={() => setIsShopForMeOpen(true)}
-          size="lg"
-          className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
-        >
-          <Bot className="h-6 w-6" />
-          <span className="sr-only">Shop For Me</span>
-        </Button>
-      </div>
+      {pathname === "/" && (
+        <div className="fixed bottom-4 right-4 md:hidden z-50 flex flex-col gap-4">
+          <Button
+            onClick={() => setIsShopForMeOpen(true)}
+            size="lg"
+            className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
+          >
+            <Bot className="h-6 w-6" />
+            <span className="sr-only">Shop For Me</span>
+          </Button>
+        </div>
+      )}
 
       {/* ShopForMeButton modal */}
       <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
