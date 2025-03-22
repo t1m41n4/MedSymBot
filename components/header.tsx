@@ -48,7 +48,7 @@ const Header = () => {
                 className="flex items-center gap-2 text-lg font-semibold"
               >
                 <Package className="h-6 w-6" />
-                <span className="font-bold">MedExpress</span>
+                <span className="font-bold">AfyaGo</span>
               </Link>
               <Link
                 href="/"
@@ -93,7 +93,7 @@ const Header = () => {
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Package className="h-6 w-6" />
           <span className="hidden font-bold sm:inline-block">
-            MedExpress
+            AfyaGo
           </span>
         </Link>
 

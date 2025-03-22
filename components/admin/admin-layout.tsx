@@ -70,7 +70,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         <Sidebar>
           <SidebarHeader className="flex items-center px-4 py-2">
             <Link href="/admin" className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-teal-600">MedExpress</span>
+              <span className="text-xl font-bold text-teal-600">AfyaGo</span>
               <span className="text-xs bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded">Admin</span>
             </Link>
           </SidebarHeader>
