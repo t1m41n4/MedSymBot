@@ -292,8 +292,8 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile floating action button */}
-      <div className="fixed bottom-4 right-4 md:hidden z-50">
+      {/* Mobile floating action buttons */}
+      <div className="fixed bottom-4 right-4 md:hidden z-50 flex flex-col gap-4">
         <Button
           onClick={() => {
             const shopForMeBtn = document.querySelector('[data-shop-for-me="true"]') as HTMLButtonElement
