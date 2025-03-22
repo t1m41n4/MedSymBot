@@ -106,11 +106,6 @@ const productsByCategory = {
     {
       id: 3,
       name: "Vitamin C 1000mg",
-      price: 600,\
-      image: "/placeholder.svg?  [
-    {
-      id: 3,
-      name: "Vitamin C 1000mg",
       price: 600,
       image: "/placeholder.svg?height=200&width=200",
       category: "Vitamins",
