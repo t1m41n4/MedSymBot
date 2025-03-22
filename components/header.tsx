@@ -305,10 +305,8 @@ const Header = () => {
         </Button>
       </div>
 
-      {/* Render ShopForMeButton for mobile */}
-      <div className="md:hidden">
-        <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
-      </div>
+      {/* ShopForMeButton modal */}
+      <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
     </>
   )
 }
