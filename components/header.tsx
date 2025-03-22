@@ -259,8 +259,11 @@ const Header = () => {
               />
             </div>
 
+            {/* Hide ShopForMeButton on mobile */}
             {shouldShowShopForMe && (
-              <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
+              <div className="hidden md:block">
+                <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
+              </div>
             )}
 
             <Link href="/cart">
