@@ -150,7 +150,7 @@ export default function ShopForMeButton({ isOpen, onOpenChange }: ShopForMeButto
     <>
       <Button
         onClick={() => onOpenChange?.(true)}
-        className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
+        className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white w-auto"
         data-shop-for-me="true"
       >
         <Bot className="mr-2 h-4 w-4" />
