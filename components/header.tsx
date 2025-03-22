@@ -14,7 +14,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Search, ShoppingCart, Menu, User, Package, FileText, Bot } from "lucide-react"
@@ -29,15 +29,21 @@ const Header = () => {
   const { user, logout } = useAuth()
   const [searchQuery, setSearchQuery] = useState("")
   const [isShopForMeOpen, setIsShopForMeOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const shouldShowShopForMe = ['/products', '/categories'].includes(pathname)
 
   const isActive = (path: string) => pathname === path
-  const shouldShowShopForMe = ['/products', '/categories'].includes(pathname)
+
+  const handleLinkClick = () => {
+    // Close the mobile menu when a link is clicked
+    setIsOpen(false)
+  }
 
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b bg-background">
         <div className="container flex h-14 items-center">
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="h-6 w-6" />
@@ -59,6 +65,7 @@ const Header = () => {
                       className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
                         isActive("/") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
                       }`}
+                      onClick={handleLinkClick}
                     >
                       Home
                     </Link>
@@ -72,6 +79,7 @@ const Header = () => {
                       className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
                         isActive("/products") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
                       }`}
+                      onClick={handleLinkClick}
                     >
                       All Products
                     </Link>
@@ -80,6 +88,7 @@ const Header = () => {
                       className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
                         isActive("/categories") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
                       }`}
+                      onClick={handleLinkClick}
                     >
                       Categories
                     </Link>
@@ -88,6 +97,7 @@ const Header = () => {
                       className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
                         isActive("/prescriptions") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
                       }`}
+                      onClick={handleLinkClick}
                     >
                       Prescriptions
                     </Link>
@@ -100,6 +110,7 @@ const Header = () => {
                       className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
                         isActive("/about") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
                       }`}
+                      onClick={handleLinkClick}
                     >
                       About Us
                     </Link>
@@ -108,6 +119,7 @@ const Header = () => {
                       className={`flex items-center gap-2 px-2 py-2 text-sm rounded-md ${
                         isActive("/contact") ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"
                       }`}
+                      onClick={handleLinkClick}
                     >
                       Contact
                     </Link>
@@ -133,7 +145,7 @@ const Header = () => {
                 ) : (
                   <div className="border-t pt-4 mt-4">
                     <Button asChild className="w-full">
-                      <Link href="/login">Sign In</Link>
+                      <Link href="/login" onClick={handleLinkClick}>Sign In</Link>
                     </Button>
                   </div>
                 )}
