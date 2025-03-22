@@ -27,9 +27,6 @@ const MobileMenu = ({ routes, onClose }: MobileMenuProps) => {
         </Button>
       </div>
       <div className="p-4">
-        <div className="relative mb-4">
-          <Input type="search" placeholder="Search medications..." className="w-full" />
-        </div>
         <nav className="flex flex-col space-y-4">
           {routes.map((route) => (
             <Link

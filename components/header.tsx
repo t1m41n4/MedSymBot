@@ -51,17 +51,6 @@ const Header = () => {
                   <span className="font-bold text-lg">AfyaGo</span>
                 </div>
 
-                <div className="relative mb-4">
-                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    type="search"
-                    placeholder="Search products..."
-                    className="pl-8"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                </div>
-
                 <nav className="flex-1">
                   <div className="space-y-1">
                     <h4 className="px-2 text-sm font-semibold mb-2">Main Menu</h4>
