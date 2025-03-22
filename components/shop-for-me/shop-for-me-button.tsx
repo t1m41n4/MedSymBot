@@ -147,6 +147,7 @@ export default function ShopForMeButton() {
       <Button
         onClick={() => setIsOpen(true)}
         className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white"
+        data-shop-for-me="true"
       >
         <Bot className="mr-2 h-4 w-4" />
         Shop For Me
