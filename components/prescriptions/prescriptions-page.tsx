@@ -31,7 +31,7 @@ export default function PrescriptionsPage() {
             <div>
               <h2 className="text-2xl font-bold mb-4">Easy Prescription Fulfillment</h2>
               <p className="text-gray-600 mb-6">
-                At MedExpress, we make it easy to get your prescription medications delivered right to your doorstep.
+                At AfyaGo, we make it easy to get your prescription medications delivered right to your doorstep.
                 Our secure and convenient prescription service ensures you never run out of your essential medications.
               </p>
 

@@ -82,9 +82,9 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-bold mb-2">Email</h3>
                 <p className="text-gray-600 mb-1">General Inquiries:</p>
-                <p className="text-gray-900">info@medexpress.com</p>
+                <p className="text-gray-900">info@afyago.com</p>
                 <p className="text-gray-600 mb-1 mt-3">Customer Support:</p>
-                <p className="text-gray-900">support@medexpress.com</p>
+                <p className="text-gray-900">support@afyago.com</p>
               </div>
             </div>
           </CardContent>

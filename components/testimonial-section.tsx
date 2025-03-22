@@ -7,7 +7,7 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "Regular Customer",
     content:
-      "MedExpress has been a lifesaver for me. The delivery is always on time, and their prices are better than my local pharmacy. The AI chatbot helped me find the right medication for my allergies!",
+      "AfyaGo has been a lifesaver for me. The delivery is always on time, and their prices are better than my local pharmacy. The AI chatbot helped me find the right medication for my allergies!",
     rating: 5,
   },
   {
@@ -15,7 +15,7 @@ const testimonials = [
     name: "Michael Omondi",
     role: "Diabetic Patient",
     content:
-      "As someone who needs regular medication, MedExpress makes it so convenient. Their prescription refill service is seamless, and their customer service is exceptional.",
+      "As someone who needs regular medication, AfyaGo makes it so convenient. Their prescription refill service is seamless, and their customer service is exceptional.",
     rating: 5,
   },
   {
@@ -23,7 +23,7 @@ const testimonials = [
     name: "Amina Hassan",
     role: "New Mother",
     content:
-      "I've been using MedExpress for all my baby's needs. Their baby care section is comprehensive, and the fast delivery means I never run out of essentials.",
+      "I've been using AfyaGo for all my baby's needs. Their baby care section is comprehensive, and the fast delivery means I never run out of essentials.",
     rating: 4,
   },
 ]

@@ -52,7 +52,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     },
     brand: {
       '@type': 'Brand',
-      name: 'Online Pharmacy'
+      name: 'AfyaGo'
     },
     category: product.category,
     sku: product.id,

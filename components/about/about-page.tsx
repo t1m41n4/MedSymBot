@@ -13,7 +13,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-teal-500/90 to-emerald-600/90" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">About MedExpress</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">About AfyaGo</h1>
           <p className="mt-6 max-w-2xl text-xl text-white">
             Your trusted online pharmacy, delivering quality healthcare products and medications across Kenya.
           </p>
@@ -25,7 +25,7 @@ export default function AboutPage() {
         <div>
           <h2 className="text-3xl font-bold mb-6">Our Story</h2>
           <p className="text-gray-600 mb-4">
-            Founded in 2018, MedExpress was born out of a simple yet powerful vision: to make quality healthcare
+            Founded in 2018, AfyaGo was born out of a simple yet powerful vision: to make quality healthcare
             accessible to all Kenyans. We recognized the challenges many people faced in accessing medications and
             healthcare products, especially those in remote areas or with mobility constraints.
           </p>
@@ -35,14 +35,14 @@ export default function AboutPage() {
             customer care.
           </p>
           <p className="text-gray-600">
-            Today, MedExpress continues to innovate and expand, leveraging technology to improve healthcare access while
+            Today, AfyaGo continues to innovate and expand, leveraging technology to improve healthcare access while
             maintaining the personal touch that has defined our service from day one.
           </p>
         </div>
         <div className="rounded-lg overflow-hidden">
           <Image
             src="/placeholder.svg?height=400&width=600"
-            alt="MedExpress Team"
+            alt="AfyaGo Team"
             width={600}
             height={400}
             className="w-full h-auto"
@@ -55,7 +55,7 @@ export default function AboutPage() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Our Mission & Values</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            At MedExpress, we're guided by a clear mission and strong values that shape everything we do.
+            At AfyaGo, we're guided by a clear mission and strong values that shape everything we do.
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export default function AboutPage() {
       {/* Why Choose Us */}
       <div className="mb-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Why Choose MedExpress</h2>
+          <h2 className="text-3xl font-bold mb-4">Why Choose AfyaGo</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
             We strive to provide the best possible service and experience for our customers.
           </p>
@@ -192,7 +192,7 @@ export default function AboutPage() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Our Team</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Meet the dedicated professionals behind MedExpress who work tirelessly to ensure you receive the best
+            Meet the dedicated professionals behind AfyaGo who work tirelessly to ensure you receive the best
             service.
           </p>
         </div>
@@ -240,9 +240,9 @@ export default function AboutPage() {
 
       {/* Call to Action */}
       <div className="bg-gray-50 rounded-xl p-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">Experience the MedExpress Difference</h2>
+        <h2 className="text-2xl font-bold mb-4">Experience the AfyaGo Difference</h2>
         <p className="text-gray-600 max-w-2xl mx-auto mb-6">
-          Join thousands of satisfied customers who trust MedExpress for their healthcare needs. Start shopping today
+          Join thousands of satisfied customers who trust AfyaGo for their healthcare needs. Start shopping today
           and discover why we're Kenya's leading online pharmacy.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

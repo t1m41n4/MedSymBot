@@ -19,7 +19,7 @@ const MobileMenu = ({ routes, onClose }: MobileMenuProps) => {
     <div className="fixed inset-0 z-50 flex flex-col bg-background md:hidden">
       <div className="flex items-center justify-between border-b px-4 py-3">
         <Link href="/" className="flex items-center space-x-2" onClick={onClose}>
-          <span className="text-xl font-bold text-teal-600">MedExpress</span>
+          <span className="text-xl font-bold text-teal-600">AfyaGo</span>
         </Link>
         <Button variant="ghost" size="icon" onClick={onClose}>
           <X className="h-6 w-6" />

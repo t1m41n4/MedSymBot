@@ -726,7 +726,7 @@ export default function RasaChatbot({ onClose }: RasaChatbotProps) {
       botResponse = "Hello! How can I assist you with your health needs today?"
     } else if (input.includes("account features") || input.includes("account benefits")) {
       botResponse =
-        "With a MedExpress account, you can track your orders, save your prescription information, set up medication reminders, access your order history, and enjoy faster checkout. Your personal information is kept secure and confidential."
+        "With an AfyaGo account, you can track your orders, save your prescription information, set up medication reminders, access your order history, and enjoy faster checkout. Your personal information is kept secure and confidential."
     } else {
       botResponse =
         "I'm not sure I understand. Could you provide more details about your symptoms or what medication you're looking for? Or would you like me to help you find a specific product?"

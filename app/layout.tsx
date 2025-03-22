@@ -19,7 +19,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "MedExpress | Online Pharmacy",
+  title: "AfyaGo | Online Pharmacy",
   description: "Your trusted online pharmacy for all your medication needs",
   generator: 'v0.dev'
 }

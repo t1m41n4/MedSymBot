@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="text-lg font-semibold text-teal-600 mb-4">MedExpress</h3>
+            <h3 className="text-lg font-semibold text-teal-600 mb-4">AfyaGo</h3>
             <p className="text-gray-600 mb-4">
               Your trusted online pharmacy for all your medication needs. We provide quality healthcare products
               delivered to your doorstep.
@@ -96,7 +96,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <Mail className="h-5 w-5 text-teal-600 mr-2 mt-0.5" />
-                <span className="text-gray-600">support@medexpress.com</span>
+                <span className="text-gray-600">support@afyago.com</span>
               </li>
               <li className="text-gray-600 mt-4">
                 <p>123 Health Street</p>
