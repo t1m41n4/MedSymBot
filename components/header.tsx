@@ -31,6 +31,7 @@ const Header = () => {
   const [isShopForMeOpen, setIsShopForMeOpen] = useState(false)
 
   const isActive = (path: string) => pathname === path
+  const shouldShowShopForMe = ['/products', '/categories'].includes(pathname)
 
   return (
     <>
@@ -258,10 +259,6 @@ const Header = () => {
           </div>
 
           <div className="ml-auto flex items-center gap-2">
-            <div className="hidden md:block">
-              <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
-            </div>
-
             <div className="relative hidden md:flex items-center">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
@@ -272,6 +269,10 @@ const Header = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
+
+            {shouldShowShopForMe && (
+              <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
+            )}
 
             <Link href="/cart">
               <Button variant="ghost" size="icon" className="relative">
@@ -353,8 +354,8 @@ const Header = () => {
       </header>
 
       {/* Mobile floating action buttons */}
-      {pathname === "/" && (
-        <div className="fixed bottom-4 right-4 md:hidden z-50 flex flex-col gap-4">
+      <div className="fixed bottom-4 right-4 md:hidden z-50 flex flex-col gap-4">
+        {shouldShowShopForMe && (
           <Button
             onClick={() => setIsShopForMeOpen(true)}
             size="lg"
@@ -363,8 +364,8 @@ const Header = () => {
             <Bot className="h-6 w-6" />
             <span className="sr-only">Shop For Me</span>
           </Button>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* ShopForMeButton modal */}
       <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
