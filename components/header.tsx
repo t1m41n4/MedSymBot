@@ -27,9 +27,9 @@ const Header = () => {
   const { cartItems, getCartTotal } = useCart()
   const { user, logout } = useAuth()
   const [searchQuery, setSearchQuery] = useState("")
-  
+
   const isActive = (path: string) => pathname === path
-  
+
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center">
@@ -88,14 +88,14 @@ const Header = () => {
             </nav>
           </SheetContent>
         </Sheet>
-        
+
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Package className="h-6 w-6" />
           <span className="hidden font-bold sm:inline-block">
             MedExpress
           </span>
         </Link>
-        
+
         <div className="hidden md:flex">
           <NavigationMenu>
             <NavigationMenuList>
@@ -106,7 +106,7 @@ const Header = () => {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              
+
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Products</NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -159,7 +159,7 @@ const Header = () => {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              
+
               <NavigationMenuItem>
                 <Link href="/categories" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -167,7 +167,7 @@ const Header = () => {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              
+
               <NavigationMenuItem>
                 <Link href="/prescriptions" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -175,7 +175,7 @@ const Header = () => {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              
+
               <NavigationMenuItem>
                 <Link href="/about" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -183,7 +183,7 @@ const Header = () => {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              
+
               <NavigationMenuItem>
                 <Link href="/contact" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -194,12 +194,12 @@ const Header = () => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        
+
         <div className="ml-auto flex items-center gap-2">
           <div className="hidden md:flex">
             <ShopForMeButton />
           </div>
-          
+
           <div className="relative hidden md:flex items-center">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
@@ -210,7 +210,7 @@ const Header = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          
+
           <Link href="/cart">
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingCart className="h-5 w-5" />
@@ -222,7 +222,7 @@ const Header = () => {
               <span className="sr-only">Cart</span>
             </Button>
           </Link>
-          
+
           {user ? (
             <div className="relative">
               <NavigationMenu>
@@ -265,8 +265,29 @@ const Header = () => {
                         <li>
                           <Link href="/account/prescriptions" legacyBehavior passHref>
                             <NavigationMenuLink className="flex items-center gap-2 select-none space-y-1 rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                              <FileText className="h-4 w-4" />
-                              <span>Prescriptions</span>
-                            </NavigationMenuLink>
-                          \
+                                                    <FileText className="h-4 w-4" />
+                                                    <span>Prescriptions</span>
+                                                  </NavigationMenuLink>
+                                                </Link>
+                                              </li>
+                                            </ul>
+                                          </NavigationMenuContent>
+                                        </NavigationMenuItem>
+                                      </NavigationMenuList>
+                                    </NavigationMenu>
+                                  </div>
+                                ) : (
+                                  <Link href="/login">
+                                    <Button variant="ghost" size="icon">
+                                      <User className="h-5 w-5" />
+                                      <span className="sr-only">Login</span>
+                                              </Button>
+                                            </Link>
+                                          )}
+                                        </div>
+                                      </div>
+                                    </header>
+                                  )
+                          }
 
+                          export default Header
