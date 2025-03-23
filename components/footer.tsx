@@ -107,7 +107,7 @@ const Footer = () => {
         </div>
         <div className="border-t border-gray-200 mt-12 pt-8">
           <p className="text-center text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} MedExpress. All rights reserved.
+            &copy; {new Date().getFullYear()} AfyaGo All rights reserved.
           </p>
           <div className="flex justify-center space-x-6 mt-4">
             <Link href="/terms" className="text-sm text-gray-500 hover:text-teal-600">

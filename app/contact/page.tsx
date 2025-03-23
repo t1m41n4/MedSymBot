@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import ContactPage from "@/components/contact/contact-page"
 
 export const metadata: Metadata = {
-  title: "Contact Us | MedExpress",
-  description: "Get in touch with MedExpress for any questions or support",
+  title: "Contact Us | AfyaGo,
+  description: "Get in touch with AfyaGofor any questions or support",
 }
 
 export default function Contact() {

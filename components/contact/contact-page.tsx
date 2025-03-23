@@ -220,7 +220,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold mb-2">Address</h3>
-                  <p className="text-gray-600 mb-1">MedExpress Headquarters:</p>
+                  <p className="text-gray-600 mb-1">AfyaGoHeadquarters:</p>
                   <p className="text-gray-900">123 Health Street</p>
                   <p className="text-gray-900">Nairobi, Kenya</p>
                 </div>

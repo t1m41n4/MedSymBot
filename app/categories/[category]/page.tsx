@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import CategoryPage from "@/components/categories/category-page"
 
 export const metadata: Metadata = {
-  title: "Category Products | MedExpress",
+  title: "Category Products | AfyaGo,
   description: "Browse products by category",
 }
 
