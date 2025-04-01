@@ -11,6 +11,7 @@ import { ChatbotProvider } from "@/context/chatbot-context"
 import ChatbotButton from "@/components/chatbot/chatbot-button"
 import { ComparisonProvider } from '@/context/comparison-context'
 import { ComparisonFloatingButtonWrapper } from "@/components/comparison/floating-button-wrapper"
+import { ErrorBoundary } from "@/components/error-boundary"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,8 +21,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "AfyaGo | Online Pharmacy",
-  description: "Your trusted online pharmacy for all your medication needs",
-  generator: 'v0.dev'
+  description: "Your trusted online pharmacy for all your medication needs in Kenya. Fast delivery, genuine medicines.",
+  keywords: "pharmacy, medicine, healthcare, prescription, Kenya, Nairobi, delivery",
+  openGraph: {
+    title: "AfyaGo | Online Pharmacy",
+    description: "Your trusted online pharmacy for all your medication needs",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AfyaGo | Online Pharmacy",
+    description: "Your trusted online pharmacy for all your medication needs",
+    images: ["/og-image.jpg"],
+  },
+  verification: {
+    google: "google-site-verification-code",
+  },
 }
 
 export default function RootLayout({
@@ -33,22 +48,24 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProviderWrapper>
-          <AuthProvider>
-            <CartProvider>
-              <ChatbotProvider>
-                <ComparisonProvider>
-                  <div className="flex min-h-screen flex-col">
-                    <Header />
-                    <main className="flex-1">{children}</main>
-                    <Footer />
-                    <ChatbotButton />
-                    <ComparisonFloatingButtonWrapper />
-                  </div>
-                  <Toaster />
-                </ComparisonProvider>
-              </ChatbotProvider>
-            </CartProvider>
-          </AuthProvider>
+          <ErrorBoundary>
+            <AuthProvider>
+              <CartProvider>
+                <ChatbotProvider>
+                  <ComparisonProvider>
+                    <div className="flex min-h-screen flex-col">
+                      <Header />
+                      <main className="flex-1">{children}</main>
+                      <Footer />
+                      <ChatbotButton />
+                      <ComparisonFloatingButtonWrapper />
+                    </div>
+                    <Toaster />
+                  </ComparisonProvider>
+                </ChatbotProvider>
+              </CartProvider>
+            </AuthProvider>
+          </ErrorBoundary>
         </ThemeProviderWrapper>
       </body>
     </html>
