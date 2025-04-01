@@ -1,39 +1,36 @@
-import React from 'react'
-import { Button } from '@/components/ui/button'
+import { Component, type ReactNode } from "react"
+import { Button } from "@/components/ui/button"
+import { AlertTriangle } from "lucide-react"
 
-interface ErrorBoundaryState {
-  hasError: boolean
-  error?: Error
+interface Props {
+  children?: ReactNode
 }
 
-export class ErrorBoundary extends React.Component<
-  { children: React.ReactNode },
-  ErrorBoundaryState
-> {
-  constructor(props: { children: React.ReactNode }) {
-    super(props)
-    this.state = { hasError: false }
+interface State {
+  hasError: boolean
+  error: Error | null
+}
+
+export class ErrorBoundary extends Component<Props, State> {
+  public state: State = {
+    hasError: false,
+    error: null
   }
 
-  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+  public static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error }
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo)
-  }
-
-  render() {
+  public render() {
     if (this.state.hasError) {
       return (
         <div className="flex flex-col items-center justify-center min-h-[400px] p-4">
-          <h2 className="text-2xl font-bold mb-4">Something went wrong</h2>
-          <p className="text-gray-600 mb-4">
-            {this.state.error?.message || 'An unexpected error occurred'}
+          <AlertTriangle className="h-12 w-12 text-destructive mb-4" />
+          <h2 className="text-lg font-semibold mb-2">Something went wrong</h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            {this.state.error?.message || "An unexpected error occurred"}
           </p>
-          <Button onClick={() => window.location.reload()}>
-            Refresh Page
-          </Button>
+          <Button onClick={() => window.location.reload()}>Try again</Button>
         </div>
       )
     }

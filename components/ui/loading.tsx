@@ -1,19 +1,10 @@
 import { Loader2 } from "lucide-react"
 
-interface LoadingProps {
-  message?: string
-  className?: string
-}
-
-export function Loading({ message = "Loading...", className = "" }: LoadingProps) {
+export function Loading({ message = "Loading..." }: { message?: string }) {
   return (
-    <div
-      role="alert"
-      aria-busy="true"
-      className={`flex flex-col items-center justify-center p-4 ${className}`}
-    >
-      <Loader2 className="h-8 w-8 animate-spin mb-2" />
-      <p className="text-sm text-gray-500">{message}</p>
+    <div className="flex flex-col items-center justify-center min-h-[200px] p-4">
+      <Loader2 className="h-8 w-8 animate-spin text-primary mb-4" />
+      <p className="text-sm text-muted-foreground">{message}</p>
     </div>
   )
 }

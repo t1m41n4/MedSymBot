@@ -12,6 +12,7 @@ import ChatbotButton from "@/components/chatbot/chatbot-button"
 import { ComparisonProvider } from '@/context/comparison-context'
 import { ComparisonFloatingButtonWrapper } from "@/components/comparison/floating-button-wrapper"
 import { ErrorBoundary } from "@/components/error-boundary"
+import { ClientProvider } from "@/components/providers/client-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,22 +50,24 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProviderWrapper>
           <ErrorBoundary>
-            <AuthProvider>
-              <CartProvider>
-                <ChatbotProvider>
-                  <ComparisonProvider>
-                    <div className="flex min-h-screen flex-col">
-                      <Header />
-                      <main className="flex-1">{children}</main>
-                      <Footer />
-                      <ChatbotButton />
-                      <ComparisonFloatingButtonWrapper />
-                    </div>
-                    <Toaster />
-                  </ComparisonProvider>
-                </ChatbotProvider>
-              </CartProvider>
-            </AuthProvider>
+            <ClientProvider>
+              <AuthProvider>
+                <CartProvider>
+                  <ChatbotProvider>
+                    <ComparisonProvider>
+                      <div className="flex min-h-screen flex-col">
+                        <Header />
+                        <main className="flex-1">{children}</main>
+                        <Footer />
+                        <ChatbotButton />
+                        <ComparisonFloatingButtonWrapper />
+                      </div>
+                      <Toaster />
+                    </ComparisonProvider>
+                  </ChatbotProvider>
+                </CartProvider>
+              </AuthProvider>
+            </ClientProvider>
           </ErrorBoundary>
         </ThemeProviderWrapper>
       </body>
