@@ -20,7 +20,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Search, ShoppingCart, Menu, User, Package, FileText, Bot } from "lucide-react"
 import { useCart } from "@/context/cart-context"
 import { useAuth } from "@/context/auth-context"
-import ShopForMeButton from "@/components/shop-for-me/shop-for-me-button"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const Header = () => {
@@ -28,9 +27,7 @@ const Header = () => {
   const { cartItems, getCartTotal } = useCart()
   const { user, logout } = useAuth()
   const [searchQuery, setSearchQuery] = useState("")
-  const [isShopForMeOpen, setIsShopForMeOpen] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const shouldShowShopForMe = ['/products', '/categories'].includes(pathname)
 
   const isActive = (path: string) => pathname === path
 
@@ -41,7 +38,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b bg-background">
+      <header className="sticky top-0 z-40 w-full border-b bg-background">
         <div className="container flex h-14 items-center">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -271,13 +268,6 @@ const Header = () => {
               />
             </div>
 
-            {/* Hide ShopForMeButton on mobile */}
-            {shouldShowShopForMe && (
-              <div className="hidden md:block">
-                <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
-              </div>
-            )}
-
             <Link href="/cart">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
@@ -356,23 +346,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-
-      {/* Mobile floating action buttons */}
-      <div className="fixed bottom-4 right-4 md:hidden z-50 flex flex-col gap-4">
-        {shouldShowShopForMe && (
-          <Button
-            onClick={() => setIsShopForMeOpen(true)}
-            size="lg"
-            className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
-          >
-            <Bot className="h-6 w-6" />
-            <span className="sr-only">Shop For Me</span>
-          </Button>
-        )}
-      </div>
-
-      {/* ShopForMeButton modal */}
-      <ShopForMeButton isOpen={isShopForMeOpen} onOpenChange={setIsShopForMeOpen} />
     </>
   )
 }

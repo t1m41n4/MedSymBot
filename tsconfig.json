@@ -19,8 +19,16 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@components/*": ["components/*"],
+      "@lib/*": ["lib/*"],
+      "@hooks/*": ["hooks/*"],
+      "@utils/*": ["utils/*"],
+      "@types/*": ["types/*"],
+      "@services/*": ["services/*"],
+      "@contexts/*": ["contexts/*"]
     },
+    "baseUrl": ".",
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,

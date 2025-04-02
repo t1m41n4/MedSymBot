@@ -8,9 +8,8 @@ import { Toaster } from "@/components/ui/toaster"
 import { CartProvider } from "@/context/cart-context"
 import { AuthProvider } from "@/context/auth-context"
 import { ChatbotProvider } from "@/context/chatbot-context"
-import ChatbotButton from "@/components/chatbot/chatbot-button"
+import { FloatingButtons } from "@/components/floating-buttons"
 import { ComparisonProvider } from '@/context/comparison-context'
-import { ComparisonFloatingButtonWrapper } from "@/components/comparison/floating-button-wrapper"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { ClientProvider } from "@/components/providers/client-provider"
 
@@ -59,8 +58,7 @@ export default function RootLayout({
                         <Header />
                         <main className="flex-1">{children}</main>
                         <Footer />
-                        <ChatbotButton />
-                        <ComparisonFloatingButtonWrapper />
+                        <FloatingButtons />
                       </div>
                       <Toaster />
                     </ComparisonProvider>

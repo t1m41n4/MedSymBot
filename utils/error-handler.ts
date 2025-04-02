@@ -1,26 +1,23 @@
+import { logError } from './logger'
+
 export class AppError extends Error {
   constructor(
     public message: string,
-    public code: string,
-    public status: number = 500
+    public statusCode: number = 500,
+    public code?: string
   ) {
     super(message)
     this.name = 'AppError'
   }
 }
 
-export function handleApiError(error: unknown) {
+export const handleApiError = (error: unknown) => {
   if (error instanceof AppError) {
-    return {
-      message: error.message,
-      code: error.code,
-      status: error.status
-    }
+    logError(error, { statusCode: error.statusCode, code: error.code })
+    return { message: error.message, statusCode: error.statusCode }
   }
 
-  return {
-    message: 'An unexpected error occurred',
-    code: 'UNKNOWN_ERROR',
-    status: 500
-  }
+  const defaultError = new AppError('Internal Server Error')
+  logError(defaultError)
+  return { message: defaultError.message, statusCode: defaultError.statusCode }
 }

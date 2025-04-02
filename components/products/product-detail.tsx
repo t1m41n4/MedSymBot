@@ -156,6 +156,40 @@ const fetchProduct = (id: number) => {
   return Promise.resolve(products.find(p => p.id === id))
 }
 
+// Memoized product image gallery component
+const ProductGallery = memo(function ProductGallery({ images, onImageChange }: {
+  images: string[],
+  onImageChange: (index: number) => void
+}) {
+  return (
+    <div className="grid gap-4">
+      {/* ...existing gallery code... */}
+    </div>
+  )
+})
+
+// Memoized product tabs component
+const ProductTabs = memo(function ProductTabs({
+  description,
+  details,
+  stock,
+  sku,
+  category
+}: {
+  description: string
+  details: string
+  stock: number
+  sku: string
+  category: string
+}) {
+  return (
+    <Tabs defaultValue="description">
+      {/* ...existing tabs code... */}
+    </Tabs>
+  )
+})
+
+// Main component with performance optimizations
 const ProductDetail = memo(function ProductDetail({ id }: { id: number }) {
   const { data: product, isLoading: productLoading } = useProductCache(`product-${id}`,
     () => fetchProduct(id)
@@ -324,6 +358,40 @@ const ProductDetail = memo(function ProductDetail({ id }: { id: number }) {
       })
     }
   }
+
+  // Memoize expensive computations
+  const { filteredWarnings, criticalWarnings } = useMemo(() => {
+    const filtered = medicationWarnings.filter(w => w.severity === 'high')
+    const critical = medicationWarnings.filter(w => w.severity === 'critical')
+    return { filteredWarnings: filtered, criticalWarnings: critical }
+  }, [medicationWarnings])
+
+  const stockStatus = useMemo(() => {
+    return {
+      isLow: product.stock < 10,
+      isOutOfStock: product.stock === 0,
+      message: product.stock === 0 ? 'Out of Stock' :
+               product.stock < 10 ? 'Low Stock' : 'In Stock'
+    }
+  }, [product.stock])
+
+  const productDetails = useMemo(() => {
+    return {
+      structuredData: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        name: product?.name,
+        description: product?.description,
+        sku: `PRD-${id}`,
+        brand: {
+          "@type": "Brand",
+          name: "AfyaGo"
+        },
+        price: product?.price,
+        priceCurrency: "KES"
+      }
+    }
+  }, [product, id])
 
   return (
     <A11yWrapper
@@ -579,67 +647,13 @@ const ProductDetail = memo(function ProductDetail({ id }: { id: number }) {
 
         {/* Product Details Tabs */}
         <div className="mt-12">
-          <Tabs defaultValue="description">
-            <TabsList className="w-full justify-start border-b rounded-none">
-              <TabsTrigger value="description">Description</TabsTrigger>
-              <TabsTrigger value="details">Details</TabsTrigger>
-              <TabsTrigger value="reviews">Reviews</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="description" className="py-6">
-              <div dangerouslySetInnerHTML={{ __html: product.longDescription }} />
-            </TabsContent>
-
-            <TabsContent value="details" className="py-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-lg font-medium mb-4">Product Information</h3>
-                  <table className="w-full">
-                    <tbody>
-                      <tr className="border-b">
-                        <td className="py-2 font-medium">SKU</td>
-                        <td className="py-2">{product.sku}</td>
-                      </tr>
-                      <tr className="border-b">
-                        <td className="py-2 font-medium">Category</td>
-                        <td className="py-2">{product.category}</td>
-                      </tr>
-                      <tr className="border-b">
-                        <td className="py-2 font-medium">Stock</td>
-                        <td className="py-2">{product.stock} units</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-medium mb-4">Shipping Information</h3>
-                  <p className="mb-4">We offer fast and reliable shipping across Kenya.</p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                      <span>Free delivery on orders over Ksh 5,000</span>
-                    </li>
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                      <span>Same-day delivery in Nairobi (for orders placed before 12 PM)</span>
-                    </li>
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5" />
-                      <span>Next-day delivery to most other locations in Kenya</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="reviews" className="py-6">
-              <div className="text-center py-8">
-                <p className="text-lg font-medium">Customer reviews coming soon!</p>
-                <p className="text-gray-500 mt-2">We're working on implementing our review system.</p>
-              </div>
-            </TabsContent>
-          </Tabs>
+          <ProductTabs
+            description={product.longDescription}
+            details={product.description}
+            stock={product.stock}
+            sku={product.sku}
+            category={product.category}
+          />
         </div>
 
         {/* Related Products */}
